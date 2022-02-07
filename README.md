@@ -42,12 +42,17 @@ Run these commands to upload your code to GitHub
 ![image2](images/2.png)
 
 
-> git init
+> git init 
+
 > git add .
-> git commit -m "Initial commit"
+
+> git commit -m "Initial commit" 
+
 >git branch -M main
-> git remote add origin Your_GIT_REPO_LINK
-> git remote add origin
+
+> git remote add origin 
+Your_GIT_REPO_LINK
+
 > git push -u origin main
 
 After pushing your code looks like this
@@ -55,4 +60,20 @@ After pushing your code looks like this
 ![image3](images/3.png)
 
 
+
+#### Vercel deploy
+
+create an account with your GitHub
+
+create a new project
+
+![image4](images/4.png)
+
+select your newly create a repository
+
+![image5](images/5.png)
+
+then deploy
+
+![image6](images/6.png)
 
