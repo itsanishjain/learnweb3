@@ -1,8 +1,76 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { ethers } from "ethers";
+import { useState, useEffect } from "react";
+
+const contractAddress = "0xe74179C7FEdD06117Ec4d19971D89F3498a19100";
+const abi = [
+  {
+    inputs: [],
+    name: "retrieve",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "num",
+        type: "uint256",
+      },
+    ],
+    name: "store",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
 
 export default function Home() {
+  const btnStyle = {
+    backgroundColor: "white",
+    border: "1px solid black",
+    borderRadius: "5px",
+    padding: "10px",
+    fontSize: "1.5rem",
+  };
+
+  const inputStyle = {
+    border: "1px solid black",
+    borderRadius: "5px",
+    padding: "10px",
+    fontSize: "1.5rem",
+  };
+
+  const [number, setNumber] = useState();
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("");
+
+  const retrieve = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const contract = new ethers.Contract(contractAddress, abi, provider);
+    const data = await contract.retrieve();
+    console.log(data);
+    setNumber(data);
+  };
+
+  const store = async () => {
+    setLoading(true);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(contractAddress, abi, signer);
+    const transaction = await contract.store(parseInt(value));
+    await transaction.wait();
+    setLoading(false);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,57 +81,32 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to Learn WEB 3 DAO{" "}
+          <a href="https://www.learnweb3.io/">HERE</a>
         </h1>
-
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          <button style={btnStyle} onClick={retrieve}>
+            Retrieve Number
+          </button>
+          <p>{number && `Number is: ${number}`}</p>
         </p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <p className={styles.description}>
+          <input
+            style={inputStyle}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <br />
+          <br />
+          <button style={btnStyle} onClick={store}>
+            Set Number
+          </button>
+          {loading && <p>Loading...</p>}
+        </p>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <div className={styles.grid}></div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
-  )
+  );
 }

@@ -26,6 +26,7 @@
 
 at this point, you have up and running the Next.Js app
 
+<hr>
 
 #### Github Setup
 
@@ -60,6 +61,7 @@ After pushing your code looks like this
 ![image3](images/3.png)
 
 
+<hr>
 
 #### Vercel deploy
 
@@ -79,6 +81,9 @@ then deploy
 
 
 At this point hope your Next.JS app is up and running
+
+
+<hr>
 
 
 #### deploy Smart contract to Rinkeby using remix IDE
@@ -112,3 +117,19 @@ https://remix.ethereum.org/
 
 
 ![image10](images/10.png)
+
+
+#### Now Copy the index.js from my Github
+
+here is the source code 
+
+![dapp](images/dapp.png)
+
+
+**Replace my contract address and ABI with yours** 
+
+
+![image11](images/11.png)
+
+![image12](images/12.png)
+
