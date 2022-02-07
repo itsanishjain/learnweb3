@@ -88,16 +88,27 @@ open Remix ID
 https://remix.ethereum.org/
 
 
-go to Storage.sol file and compile it by going to SOLIDITY COMPILER
+##### go to Storage.sol file and compile it by going to SOLIDITY COMPILER
 
 ![image7](images/7.png)
 
 
-open your MM and select Rinkeby
+##### open your MM and select Rinkeby
 
 ![image8](images/8.png)
 
-Go to DEPLOY & RUN TRANSACTIONS
-select injected web3 under ENVIRONMENT
+##### Go to DEPLOY & RUN TRANSACTIONS select injected web3 under ENVIRONMENT
 
 ![image9](images/9.png)
+
+<hr>
+
+#### How to connect your Smart Contract using ethers.JS and call it from Next.JS
+
+> Now install the ethers package, remember to install it within same folder as your Next.JS app:
+
+
+`yarn add ethers`
+
+
+![image10](images/10.png)
