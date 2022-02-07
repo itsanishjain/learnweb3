@@ -33,3 +33,26 @@ at this point, you have up and running the Next.Js app
 pictures
 
 ![image1](images/1.png)
+
+
+
+
+Run these commands to upload your code to GitHub
+
+![image2](images/2.png)
+
+
+> git init
+> git add .
+> git commit -m "Initial commit"
+>git branch -M main
+> git remote add origin Your_GIT_REPO_LINK
+> git remote add origin
+> git push -u origin main
+
+After pushing your code looks like this
+
+![image3](images/3.png)
+
+
+
