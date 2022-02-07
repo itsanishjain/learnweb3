@@ -27,3 +27,9 @@
 at this point, you have up and running the Next.Js app
 
 
+#### Github Setup
+
+> his is how you create a new repository
+pictures
+
+![image1]('images/1.png')
