@@ -77,3 +77,27 @@ then deploy
 
 ![image6](images/6.png)
 
+
+At this point hope your Next.JS app is up and running
+
+
+#### deploy Smart contract to Rinkeby using remix IDE
+
+open Remix ID
+
+https://remix.ethereum.org/
+
+
+go to Storage.sol file and compile it by going to SOLIDITY COMPILER
+
+![image7](images/7.png)
+
+
+open your MM and select Rinkeby
+
+![image8](images/8.png)
+
+Go to DEPLOY & RUN TRANSACTIONS
+select injected web3 under ENVIRONMENT
+
+![image9](images/9.png)
