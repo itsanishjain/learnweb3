@@ -99,11 +99,14 @@ export default function Home() {
           />
           <br />
           <br />
+        </p>
+
+        <p>
           <button style={btnStyle} onClick={store}>
             Set Number
           </button>
-          {loading && <p>Loading...</p>}
         </p>
+        {loading && <p>Loading...</p>}
 
         <div className={styles.grid}></div>
       </main>
