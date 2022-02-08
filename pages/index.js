@@ -49,6 +49,10 @@ export default function Home() {
     fontSize: "1.5rem",
   };
 
+  async function requestAccount() {
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+  }
+
   const [number, setNumber] = useState();
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState("");
@@ -64,21 +68,13 @@ export default function Home() {
   const store = async () => {
     setLoading(true);
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-    console.log("Provider", provider);
-
     const signer = provider.getSigner();
-
-    console.log("SIGNER", signer);
-
     const contract = new ethers.Contract(contractAddress, abi, signer);
-
-    console.log("Contract", contract);
+    
+    // this is super important function because it connects the wallet/address with the website 
+    await requestAccount();
 
     const transaction = await contract.store(parseInt(value));
-
-    console.log("Transaction", transaction);
-
     await transaction.wait();
     setLoading(false);
   };
